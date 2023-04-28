@@ -1,38 +1,71 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{ msg: string }>()
+const prop = defineProps<{ msg: string, countpro: number }>()
 
 const count = ref(0)
+const countMsg = ref(prop.countpro)
+const isShow = ref(true)
+
+const add = () => {
+  // countMsg.value++
+  isShow.value = !isShow.value
+}
+
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
+    <button
+      type="button"
+      @click="count++"
+    >
+      count is {{ count }}
+    </button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
   </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <div>
+    <Transition>
+      <div
+        v-if="isShow"
+        class="list"
+      >
+        111111
+      </div>
+    </Transition>
+    {{ countMsg }}
+    <button
+      type="button"
+      @click="add"
+    >
+      点击添加
+    </button>
+  </div>
 </template>
 
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+.list {
+  height: 40px;
+  background: #000;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 40px;
+}
+.v-leave-active,
+.v-enter-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
