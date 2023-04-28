@@ -14,8 +14,8 @@ onMounted(() => {
 });
 
 const add = () => {
-	// countMsg.value++
-	isShow.value = !isShow.value;
+		// countMsg.value++
+		isShow.value = !isShow.value;
 };
 </script>
 
