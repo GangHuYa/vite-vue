@@ -3,7 +3,7 @@
   import HelloWorld from '@components/HelloWorld.vue';
 
   const count = ref<number>(0)
-	const a=10;
+	const a = 10;
 </script>
 <template>
   <div>
